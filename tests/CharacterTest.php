@@ -25,8 +25,35 @@ class CharacterTest extends TestCase
 
 		$sonGoku = new Character();
 
-		$result = $sonGoku->getHealth();
+		$result = $sonGoku->getLevel();
 
-		$this->assertEquals(1000, $result);
+		$this->assertEquals(1, $result);
+	}
+
+	public function test_starting_Alive()
+	{
+
+		$sonGoku = new Character();
+
+		$result = $sonGoku->isAlive();
+
+		$this->assertEquals(true, $result);
+	}
+
+	public function test_damage_is_substracted_from_health()
+	{
+		//given escenario
+
+		$attacker = new Character();
+		$damaged = new Character();
+
+		// action
+
+		$attacker->attacks();
+
+		//then
+		$result = $damaged->getHealth();
+
+		$this->assertEquals(true, $result);
 	}
 }
