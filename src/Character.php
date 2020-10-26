@@ -34,6 +34,6 @@ class Character
 
     public function attacks($damaged)
     {
-       $damaged->health = $damaged->health -  $this->damage;
+       $damaged->health -=  $this->damage;
     }
 }
