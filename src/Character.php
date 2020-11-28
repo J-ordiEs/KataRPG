@@ -39,6 +39,14 @@ class Character
         {
             $oponent->alive = false;
             $oponent->health = 0;
-        }       
+        }
+    }
+
+    public function heal($friend, $healing)
+    {
+        if ($friend->isAlive() == true) 
+        {
+            $friend->health +=  $healing;
+        }
     }
 }
