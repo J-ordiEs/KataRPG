@@ -32,8 +32,13 @@ class Character
         return $this->alive;
     }
 
-    public function attacks($damaged)
+    public function attacks($oponent)
     {
-       $damaged->health -=  $this->damage;
+       $oponent->health -=  $this->damage;
+       if ($oponent->health <= 0) 
+        {
+            $oponent->alive = false;
+            $oponent->health = 0;
+        }       
     }
 }

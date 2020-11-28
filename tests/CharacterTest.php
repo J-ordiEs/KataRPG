@@ -44,16 +44,46 @@ class CharacterTest extends TestCase
 	{
 		//given escenario
 
-		$attacker = new Character();
-		$damaged = new Character();
+		$char1 = new Character();
+		$char2 = new Character();
 
 		// action
 
-		$attacker->attacks($damaged);
+		$char1->attacks($char2);
 
 		//then
-		$result = $damaged->getHealth();
+		$result = $char2->getHealth();
 
 		$this->assertEquals(900, $result);
+	}
+
+	public function test_char_dies_when_health_is_0()
+	{
+		//given escenario
+
+		$char1 = new Character();
+		$char2 = new Character();
+
+		// action
+
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		$char1->attacks($char2);
+		
+		//then
+		$result = $char2->getHealth();
+		$alive = $char2->isAlive();
+
+		$this->assertEquals(0, $result);
+		$this->assertEquals(false, $alive);
+		
 	}
 }
